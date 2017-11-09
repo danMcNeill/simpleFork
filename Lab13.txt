@@ -1,0 +1,58 @@
+Lab13 text:
+
+fork.c:
+
+1)	The order of the print statements in the output is inconsistent because the two processes are exactly the same and are running at the same exact time. Therefore, it is impossible to predict which one will finish first for any individual run.
+
+2)	After adding the sleep function, the child statement prints first. This is due to the fact that there is a one second delay in the parent function, so the child function will always finish first.
+
+3)	pid in child code: 5306
+	pid in parent code: 5305
+
+4)	ppid in child code: 5321
+	ppid in parent code: 4987
+
+5)	The last value printed is not 1 because when fork is called, the two processes have personal x values. Incrementing x in the child does not affect the x in the parent process.
+
+
+multifork.c:
+
+1)	Line 1 is printed twice because there is one fork before it. Line 2 is printed four times because there is two forks before it. Line 3 and Line 4 are printed four times each because at this point there are four parent and child processes each.
+
+2)	Line 1
+	Line 1 pid and ppid: 5572 and 4987
+	Line 1
+	Line 2
+	Line 2 pid and ppid: 5572 and 4987
+	Line 1 pid and ppid: 5573 and 5572
+	Line 4
+	Line 2
+	Line 4 pid and ppid: 5572 and 4987
+	Line 2
+	Line 3
+	Line 2
+	Line 2 pid and ppid: 5576 and 5573
+	Line 3 pid and ppid: 5575 and 5572
+	Line 2 pid and ppid: 5574 and 5572
+	Line 2 pid and ppid: 5573 and 5572
+	Line 4
+	Line 4 pid and ppid: 5576 and 5573
+	Line 4
+	Line 3
+	Line 4
+	Line 3
+	Line 4 pid and ppid: 5573 and 1
+	Line 3 pid and ppid: 5577 and 5576
+	Line 3 pid and ppid: 5578 and 5574
+	Line 4 pid and ppid: 5574 and 1
+	Line 3
+	Line 3 pid and ppid: 5579 and 1
+
+
+	The parent pid for some processes is 1 because when a child's parent process completes before the child process completes, the child's new parent becomes init, which has a pid of 1.
+
+
+exec.c:
+
+1)	Child pid = 5733, parent pid = 5732
+	My pid is 5733, parent pid is 5732.
